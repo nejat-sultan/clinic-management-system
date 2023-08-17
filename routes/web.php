@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\EmployeetypeController;
 
 
 /*
@@ -20,4 +24,19 @@ Route::get('/', function () {
 });
 
 Route::resource("/employee", EmployeeController::class);
-// Route::get('employee', [EmployeeController::class, 'index']);
+
+Route::resource("/dashboard", DashboardController::class);
+
+Route::resource("/lab", LabController::class);
+Route::get("/editlab/{id}", [LabController::class, 'edit']);
+Route::put("/lab", [LabController::class, 'update']);
+
+Route::resource("/region", RegionController::class);
+Route::get("/editregion/{id}", [RegionController::class, 'edit']);
+Route::put("/region", [RegionController::class, 'update']);
+
+Route::resource("/employeetype", EmployeetypeController::class);
+Route::get("/editemployeetype/{id}", [EmployeetypeController::class, 'edit']);
+Route::put("/employeetype", [EmployeetypeController::class, 'update']);
+
+
