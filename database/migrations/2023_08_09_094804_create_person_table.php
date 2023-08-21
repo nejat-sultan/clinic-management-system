@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('DOB');
             $table->string('PhotoURL');
             $table->string('Gender');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('PersonTypeID')->references('id')->on('person_type')->onDelete('cascade');
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');
 

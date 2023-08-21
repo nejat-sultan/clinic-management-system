@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('person_address', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('RegionID');
+            $table->unsignedBigInteger('RegionID')->nullable();
             $table->string('ZoneOrSubcity');
             $table->string('Woreda');
             $table->string('Town');
             $table->string('Kebele');
             $table->string('HouseNumber');
             $table->unsignedBigInteger('PersonID');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('RegionID')->references('id')->on('region')->onDelete('cascade');
             $table->foreign('PersonID')->references('id')->on('person')->onDelete('cascade');
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');

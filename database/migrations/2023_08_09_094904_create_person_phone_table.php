@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('PhoneNumber');
             $table->unsignedBigInteger('PersonID');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('PersonID')->references('id')->on('person')->onDelete('cascade');
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');
 

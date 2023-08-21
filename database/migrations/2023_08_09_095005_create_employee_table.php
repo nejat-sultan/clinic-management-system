@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('PersonID');
             $table->string('Username');
             $table->string('Password');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('PersonID')->references('id')->on('person')->onDelete('cascade');
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');
 

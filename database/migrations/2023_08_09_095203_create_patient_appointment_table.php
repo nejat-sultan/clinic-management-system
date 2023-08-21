@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('PatientID');
             $table->date('AppointmentDate');
             $table->string('Status');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('AssignedToID')->references('id')->on('person')->onDelete('cascade');
             $table->foreign('PatientID')->references('id')->on('patient')->onDelete('cascade');
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');

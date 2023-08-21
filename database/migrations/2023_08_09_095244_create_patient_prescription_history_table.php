@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('patient_prescription_history', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('AppointmentID');
+            $table->unsignedBigInteger('PatientID');
             $table->string('medicine');
+            $table->foreign('PatientID')->references('id')->on('patient')->onDelete('cascade');
             $table->foreign('AppointmentID')->references('id')->on('appointment')->onDelete('cascade');
 
             $table->timestamps();

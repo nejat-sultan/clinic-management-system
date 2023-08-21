@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('LabType');
             $table->string('LabDescription');
-            $table->integer('CreatedByID');
+            $table->integer('CreatedByID')->nullable();
             $table->foreign('CreatedByID')->references('id')->on('person')->onDelete('cascade');
 
             $table->timestamps();
