@@ -22,15 +22,16 @@ class Person extends Model
         return $this->belongsTo(Region::class);
     }
 
-    public function email()
+    public function emails()
     {
-        return $this->belongsTo(Email::class);
+        return $this->hasMany(Email::class);
     }
 
-    public function phone()
+    public function phones()
     {
-        return $this->belongsTo(Phone::class);
+        return $this->hasMany(Phone::class);
     }
+
 
     public function address()
     {
@@ -40,6 +41,11 @@ class Person extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
     }
 
     public function appointments()

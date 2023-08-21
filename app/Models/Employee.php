@@ -11,5 +11,10 @@ class Employee extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['PersonID', 'Username', 'Password'];
 
+    public function person()
+    {
+        return $this->belongsTo(Person::class,'PersonID');
+    }
+
     use HasFactory;
 }

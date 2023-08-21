@@ -33,8 +33,8 @@ class AppointmentController extends Controller
      */
     public function create(): View
     {
-        // $patients = Patient::pluck('CardNumber', 'id');
-        // return view('appointments.index', compact('patients'));
+        // $person = Person::where('PersonTypeID','=','3')->pluck('PersonTypeID', 'id');
+        // return view('appointments.index', compact('person'));
     }
 
     /**

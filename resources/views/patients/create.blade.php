@@ -7,42 +7,39 @@
           <div class="card-header ">
             <div class="row">
               <div class="col-sm-10">
-                <h4><b>Create Employees</b></h4>
+                <h4><b>Create Patients</b></h4>
               </div>
               <div class="col-sm-2">
-                <a href="{{ url('/employee/') }}" class="btn btn-success btn-sm" title="Back"> Back </a>
+                <a href="{{ url('/patient/') }}" class="btn btn-success btn-sm" title="Back"> Back </a>
               </div>
             </div>
           </div>
 
           <div class="card-body p-0">
-            <form action="{{ url('employee') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('patient') }}" method="post" enctype="multipart/form-data">
                 {!! csrf_field() !!}
             <div class="row g-0">
               <div class="col-lg-6">
                 <div class="p-5">
                   <h3 class="fw-normal mb-5" style="color: #145CAC;">General Information</h3>
                     <div class="row">
-                      <div class="col-md-6 mb-4 pb-2">
-                        <label class="form-label" for="form3Examplev3">Employee Type</label>
-                        <select name="PersonTypeID" id="PersonTypeID" class="form-control">
-                          @foreach($employeetypes as $id => $TypeName)
-                            <option value="{{ $id }}">{{ $TypeName }}</option>
-                          @endforeach
-                        </select>
-                      </div>
-
-                      <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                          <label class="form-label" for="form3Examplev3">Title</label>
-                          <select name="Title" id="Title" class="form-control">
-                            <option selected>Mr</option>
-                            <option value="mrs">Mrs</option>
-                            <option value="dr">Dr</option>
-                          </select>
+                    <input type="text" name="PersonTypeID" id="PersonTypeID" class="form-control form-control-lg" hidden/>
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <label class="form-label" for="form3Examplev3">Title</label>
+                            <select name="Title" id="Title" class="form-control">
+                              <option selected>Mr</option>
+                              <option value="mrs">Mrs</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <label class="form-label" for="form3Examplev4">Date of Birth</label>
+                            <input type="date" name="DOB" id="DOB" class="form-control form-control-lg" />
+                          </div>
                         </div>
                       </div>
-                    </div>
 
                     <div class="row">
                       <div class="col-md-4 mb-4 pb-2">
@@ -63,22 +60,6 @@
                         <div class="form-outline">
                           <label class="form-label" for="form3Examplev3">Last name</label>
                           <input type="text" name="LastName" id="LastName" class="form-control form-control-lg" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                          <label class="form-label" for="form3Examplev4">Date of Birth</label>
-                          <input type="date" name="DOB" id="DOB" class="form-control form-control-lg" />
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                          <label class="form-label" for="form3Examplev4">Username</label>
-                          <input type="text" name="Username" id="Username" class="form-control form-control-lg" />
                         </div>
                       </div>
                     </div>
@@ -117,9 +98,6 @@
                         <div class="form-outline">
                           <label class="form-label" for="form3Examplev3">Region</label>
                           <select name="RegionName" id="RegionName" class="form-control">
-                            <!-- <option selected>Addis Ababa</option>
-                            <option value="oromia">Oromia</option>
-                            <option value="tigray">Tigray</option> -->
                             @foreach($regions as $id => $RegionName)
                             <option value="{{ $id }}">{{ $RegionName }}</option>
                             @endforeach
@@ -180,7 +158,6 @@
                         </div>
                       </div>
                     </div>
-
               
                   <!-- <button type="button" class="btn btn-outline-light" data-mdb-ripple-color="dark">Register</button> -->
                   <input type="submit" value="Register" class="btn btn-success"></br>

@@ -11,5 +11,12 @@ class Patienthistory extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['PatientID', 'findings'];
 
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class,'PatientID')->withDefault();
+    }
+
+    
     use HasFactory;
 }

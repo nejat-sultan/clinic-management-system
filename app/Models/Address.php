@@ -13,7 +13,12 @@ class Address extends Model
 
     public function region()
     {
-        return $this->belongsTo(Region::class);
+        return $this->belongsTo(Region::class,'RegionID');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class,'PersonID');
     }
    
     use HasFactory;

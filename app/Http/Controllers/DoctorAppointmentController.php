@@ -22,10 +22,23 @@ class DoctorAppointmentController extends Controller
     public function index(): View
     {
        
-        $doctorappointments = Appointment::all();
+        // $doctorappointments = Appointment::all();
+        $doctorappointments = Appointment::where('Status','=','active')->get();
         $labs = Lab::pluck('LabType', 'id');
         return view('doctorsappointments.index', compact('labs'))->with('doctorappointments', $doctorappointments);
 
+    }
+
+    public function orderedlab(): View
+    {
+        $orderedlabs = Labhistory::all();
+        return view('doctorsappointments.vieworder')->with('orderedlabs', $orderedlabs);
+    } 
+
+    public function patienthistory(): View
+    {
+        $patienthistories = Patienthistory::all();
+        return view('doctorsappointments.viewhistory')->with('patienthistories', $patienthistories);
     }
 
     /**

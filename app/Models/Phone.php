@@ -11,5 +11,10 @@ class Phone extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['PersonID', 'PhoneNumber'];
 
+    public function person()
+    {
+        return $this->belongsTo(Person::class,'PersonID');
+    }
+
     use HasFactory;
 }

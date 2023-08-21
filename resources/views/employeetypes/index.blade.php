@@ -7,11 +7,11 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5 mb-4">
-						<h4><b>Manage Employee Types</b></h4>
+						<h4><b>Manage Person Types</b></h4>
 					</div>
 					<div class="col-sm-3">
                         <button type="button" class="btn btn-success btn-sm" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#employeetypeModal"> 
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New Employee Type
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New Person Type
                         </button>
 					</div>
                     <div class="col-sm-4">
@@ -62,7 +62,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="employeetypeModalLabel">Add Employee Type</h5>
+                        <h5 class="modal-title" id="employeetypeModalLabel">Add Person Type</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -72,11 +72,11 @@
                     {!! csrf_field() !!}
                     <div class="modal-body">
                         <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Employee Type</label>
+                            <label class="form-label" for="form3Examplev3">Person Type</label>
                             <input type="text" name="TypeName" id="TypeName1" class="form-control form-control-lg" />
                         </div>
                         <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Employee Description</label>
+                            <label class="form-label" for="form3Examplev3">Person Description</label>
                             <input type="text" name="TypeDescription" id="TypeDescription1" class="form-control form-control-lg" />
                         </div>      
                     </div>
@@ -96,7 +96,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editemployeetypemodalLabel">Edit Employee Type</h5>
+                        <h5 class="modal-title" id="editemployeetypemodalLabel">Edit Person Type</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -109,11 +109,11 @@
 
                     <div class="modal-body">
                         <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Employee Type</label>
+                            <label class="form-label" for="form3Examplev3">Person Type</label>
                             <input type="text" name="TypeName" id="TypeName" class="form-control form-control-lg" />
                         </div>
                         <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Employee Description</label>
+                            <label class="form-label" for="form3Examplev3">Person Description</label>
                             <input type="text" name="TypeDescription" id="TypeDescription" class="form-control form-control-lg" />
                         </div>  
                     </div>

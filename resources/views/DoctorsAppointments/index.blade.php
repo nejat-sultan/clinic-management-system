@@ -6,14 +6,19 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-9 mb-4">
+                    <div class="col-sm-8 mb-4">
 						<h4><b>Active Appointments</b></h4>
 					</div>
-					<!-- <div class="col-sm-3">
-                        <button type="button" class="btn btn-success btn-sm" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#appointmentModal"> 
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New Appointment
-                        </button>
-					</div> -->
+					<div class="col-sm-2">
+                        <a href="{{ url('/orderedlab') }}" class="btn btn-success btn-sm" title="Ordered Lab">
+                             Ordered Lab
+                        </a>
+					</div>
+                    <div class="col-sm-2">
+                        <a href="{{ url('/patienthistory') }}" class="btn btn-success btn-sm" title="Patient History">
+                             Patient History
+                        </a>
+					</div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -49,96 +54,99 @@
             </table>
         </div>
 
-
+        <div class="firstmodal">
         <!-- Order Lab -->
-        <div class="modal fade" id="orderlabModal" tabindex="-1" role="dialog" aria-labelledby="orderlabModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="orderlabModalLabel">Order Lab</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+            <div class="modal fade" id="orderlabModal" tabindex="-1" role="dialog" aria-labelledby="orderlabModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderlabModalLabel">Order Lab</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                    <form action="{{ url('doctorappointment') }}" method="post">
-                    {!! csrf_field() !!}
-                        @method('PUT')
-                        <input type="hidden" name="id" id="id">
+                        <form action="{{ url('doctorappointment') }}" method="post">
+                        {!! csrf_field() !!}
+                            @method('PUT')
+                            <input type="hidden" name="id" id="id">
 
-                    <div class="modal-body">
+                        <div class="modal-body">
+                            
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Patient Id</label>
+                                <input readonly type="text" name="PatientID" id="PatientID" class="form-control form-control-lg" />
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Lab Done By</label>
+                                <input readonly type="text" name="LabDoneByID" id="AssignedToID" class="form-control form-control-lg"/>
+                            </div>  
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Lab Type</label>
+                                <select name="LabID" id="LabID" class="form-control">
+                                    @foreach($labs as $id => $LabType)
+                                    <option value="{{ $id }}">{{ $LabType }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Patient Id</label>
-                            <input type="text" name="PatientID" id="PatientID" class="form-control form-control-lg" />
                         </div>
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Lab Done By</label>
-                            <input type="text" name="LabDoneByID" id="AssignedToID" class="form-control form-control-lg"/>
-                        </div>  
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Lab Type</label>
-                            <select name="LabID" id="LabID" class="form-control">
-                                @foreach($labs as $id => $LabType)
-                                <option value="{{ $id }}">{{ $LabType }}</option>
-                                @endforeach
-                            </select>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="Add" class="btn btn-success"></br>
                         </div>
-                    
-                    </div>
+                    </form>
+                </div>
+            </div>  
+        </div>  
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" value="Add" class="btn btn-success"></br>
-                    </div>
-                </form>
-            </div>
-        </div>   
-
+        <div class="secondmodal">
         <!-- Patient History -->
-        <!-- <div class="modal fade" id="patienthistoryModal" tabindex="-1" role="dialog" aria-labelledby="patienthistoryModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="patienthistoryModalLabel">Add Patient History</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+            <div class="modal fade" id="patienthistoryModal" tabindex="-1" role="dialog" aria-labelledby="patienthistoryModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="patienthistoryModalLabel">Add Patient History</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                    <form action="{{ url('patienthistory') }}" method="post">
-                    {!! csrf_field() !!}
-                        @method('PUT')
-                        <input type="hidden" name="id" id="id">
+                        <form action="{{ url('patienthistory') }}" method="post">
+                        {!! csrf_field() !!}
+                            @method('PUT')
+                            <input type="hidden" name="id" id="id">
 
-                    <div class="modal-body">
+                        <div class="modal-body">
+                            
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Patient Id</label>
+                                <input readonly type="text" name="PatientID" id="PatientID1" class="form-control form-control-lg" />
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Patient Card Number</label>
+                                <input readonly type="text" name="PatientID" id="PatientCardNo" class="form-control form-control-lg" />
+                            </div>  
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Findings Detail</label>
+                                <input type="text" name="findings" id="findings" class="form-control form-control-lg"/>
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Examplev3">Medicines Prescribed</label>
+                                <input type="text" name="medicine" id="medicine" class="form-control form-control-lg"/>
+                            </div>
                         
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Patient Id</label>
-                            <input type="text" name="PatientID" id="PatientID1" class="form-control form-control-lg" />
                         </div>
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Patient Card Number</label>
-                            <input type="text" name="PatientID" id="PatientCardNo" class="form-control form-control-lg" />
-                        </div>  
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Findings Detail</label>
-                            <input type="text" name="findings" id="findings" class="form-control form-control-lg"/>
-                        </div>
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Medicines Prescribed</label>
-                            <input type="text" name="medicine" id="medicine" class="form-control form-control-lg"/>
-                        </div>
-                    
-                    </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" value="Add" class="btn btn-success"></br>
-                    </div>
-                </form>
-            </div>
-        </div>  -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="Add" class="btn btn-success"></br>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+        </div> 
 
      
     </div> 

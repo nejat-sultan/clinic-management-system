@@ -57,6 +57,7 @@ body {
     padding: 0;
     list-style: none;
   }
+  
   .sidebar-nav > li {
     text-indent: 10px;
     line-height: 60px;
@@ -68,12 +69,15 @@ body {
     font-weight: 600;
     font-size: 18px;
   }
-  .sidebar-nav > li > a:hover,
-  .sidebar-nav > li.active > a {
+  .sidebar-nav li > a:hover,
+  .sidebar-nav li.active > a, 
+    .sidebar-nav li > a:focus  {
     text-decoration: none;
     color: #fff;
     background: #145CAC;
   }
+
+
   .sidebar-nav > li > a i.fa {
     font-size: 24px;
     width: 60px;

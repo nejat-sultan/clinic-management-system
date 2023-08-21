@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeetypeController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DoctorAppointmentController;
 use App\Http\Controllers\LabHistoryController;
+use App\Http\Controllers\PatientController; 
 
 
 /*
@@ -22,13 +23,18 @@ use App\Http\Controllers\LabHistoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+// Route::get('/', function () {
+//     return view('layout');
+// });
+
+Route::resource("/", DashboardController::class);
 
 
 Route::resource("/employee", PersonController::class);
 Route::get("/search", [PersonController::class, 'search']);
+
+Route::resource("/patient", PatientController::class);
+Route::get("/searchpatient", [PatientController::class, 'searchpatient']);
 
 Route::resource("/dashboard", DashboardController::class);
 
@@ -56,6 +62,10 @@ Route::get("/orderlab/{id}", [DoctorAppointmentController::class, 'edit']);
 Route::put("/doctorappointment", [DoctorAppointmentController::class, 'update']);
 Route::get("/patienthistory/{id}", [DoctorAppointmentController::class, 'edithistory']);
 Route::put("/patienthistory", [DoctorAppointmentController::class, 'updatehistory']);
+Route::get("/orderedlab", [DoctorAppointmentController::class, 'orderedlab']);
+Route::get("/patienthistory", [DoctorAppointmentController::class, 'patienthistory']);
+
+
 
 Route::resource("/labhistory", LabHistoryController::class);
 Route::get("/addresult/{id}", [LabHistoryController::class, 'edit']);

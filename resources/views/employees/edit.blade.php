@@ -170,24 +170,9 @@
                       </div>
                     </div>
 
-                    <h3 class="fw-normal mb-5">Employee License</h3>
-                    <div class="row">
-                      <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                          <label class="form-label" for="form3Examplev4">License Issued Date</label>
-                          <input type="date" name="LicenseGivenDate" id="LicenseGivenDate" class="form-control form-control-lg" />
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                          <label class="form-label" for="form3Examplev4">License Expiry Date</label>
-                          <input type="date" name="LicenseExpiryDate" id="LicenseExpiryDate" class="form-control form-control-lg" />
-                        </div>
-                      </div>
-                    </div>
               
-                    <button type="button" class="btn btn-outline-light" data-mdb-ripple-color="dark">Update</button>
+                    <!-- <button type="button" class="btn btn-outline-light" data-mdb-ripple-color="dark">Update</button> -->
+                    <input type="submit" value="Update" class="btn btn-success"></br>
 
                 </div>
               </div>

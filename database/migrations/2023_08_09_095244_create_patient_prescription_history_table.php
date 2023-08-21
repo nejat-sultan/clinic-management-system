@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patient_prescription_history', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('AppointmentID');
+            $table->unsignedBigInteger('AppointmentID')->nullable();
             $table->unsignedBigInteger('PatientID');
             $table->string('medicine');
             $table->foreign('PatientID')->references('id')->on('patient')->onDelete('cascade');

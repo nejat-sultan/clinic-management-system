@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('LabID');
             $table->unsignedBigInteger('PatientID');
             $table->unsignedBigInteger('LabDoneByID');
-            $table->string('LabResult');
+            $table->string('LabResult')->nullable();
             $table->foreign('LabID')->references('id')->on('lab')->onDelete('cascade');
             $table->foreign('PatientID')->references('id')->on('patient')->onDelete('cascade');
             $table->foreign('LabDoneByID')->references('id')->on('employee')->onDelete('cascade');

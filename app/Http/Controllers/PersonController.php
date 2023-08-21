@@ -24,7 +24,8 @@ class PersonController extends Controller
      */
     public function index(): View
     {
-        $employees = Person::all();
+        // $employees = Person::all();
+        $employees = Person::where('PersonTypeID','!=','3')->get();
         return view('employees.index')->with('employees', $employees);
 
         // $employees = Person::latest()->paginate(2);
@@ -48,7 +49,7 @@ class PersonController extends Controller
      */
     public function create(): View
     {
-        $employeetypes = Employeetype::pluck('TypeName', 'id');
+        $employeetypes = Employeetype::where('TypeName','!=','patient')->pluck('TypeName', 'id');
         $regions = Region::pluck('RegionName', 'id');
         return view('employees.create', compact('employeetypes','regions'));
         
@@ -126,8 +127,8 @@ class PersonController extends Controller
      */
     public function show(string $id): View
     {
-        // $employee = Employee::find($id);
-        // return view('employees.show')->with('employees', $employee);
+        $employee = Person::find($id);
+        return view('employees.show')->with('employees', $employee);
     }
 
     /**
@@ -144,10 +145,52 @@ class PersonController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        // $employee = Employee::find($id);
-        // $input = $request->all();
-        // $employee->update($input);
-        // return redirect('employee')->with('flash_message', 'Employee Updated!');  
+        $person = $request->input('PersonID');
+		$person = Person::find($person);
+		
+        $employee = $person->employee;
+        $address = $person->address;
+        $email = $person->email;
+        $phone = $person->phone;
+
+        if($person) {
+            $person->PersonTypeID = $request->get('PersonTypeID');
+            $person->Title = $request->get('Title');
+            $person->FirstName = $request->get('FirstName');
+            $person->FatherName = $request->get('FatherName');
+            $person->LastName = $request->get('LastName');
+            $person->DOB = $request->get('DOB');
+            $person = time() . '.' . request()->PhotoURL->getClientOriginalExtension();
+            request()->PhotoURL->move(public_path('images'), $fileName);
+            $input['PhotoURL'] = $person;
+            $person->Gender = $request->get('Gender');
+
+            $person->save();
+						
+			$employee->Username = $request->get('Username');
+            $employee->Password = bcrypt("123456");
+
+            $employee->save();
+	
+			$address->RegionID = $request->get('RegionID');
+            $address->ZoneOrSubcity = $request->get('ZoneOrSubcity');
+            $address->Woreda = $request->get('Woreda');
+			$address->Town = $request->get('Town');
+            $address->Kebele = $request->get('Kebele');	
+			$address->HouseNumber = $request->get('HouseNumber');
+
+            $address->save();
+
+            $email->Email = $request->get('Email');
+
+            $email->save();
+
+            $phone->PhoneNumber = $request->get('PhoneNumber');
+
+            $phone->save();
+
+            
+        }
     }
 
     /**

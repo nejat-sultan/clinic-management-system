@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Models\Appointment;
+use App\Models\Employee;
+use App\Models\Patient;
 
 
 class DashboardController extends Controller
@@ -15,7 +18,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $appointments = Appointment::count(); 
+        $employees = Employee::count(); 
+        $patients = Patient::count();     
+        return view('dashboard.index', compact('appointments', 'employees', 'patients'));
     }
 
     /**

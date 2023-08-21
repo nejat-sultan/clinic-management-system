@@ -68,15 +68,15 @@
                         
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Patient Card Number</label>
-                            <input type="text" name="PatientID" id="PatientID" class="form-control form-control-lg" />
+                            <input readonly type="text" name="PatientID" id="PatientID" class="form-control form-control-lg" />
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Done By</label>
-                            <input type="text" name="LabDoneByID" id="LabDoneByID" class="form-control form-control-lg" />
+                            <input readonly type="text" name="LabDoneByID" id="LabDoneByID" class="form-control form-control-lg" />
                         </div>  
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Type</label>
-                            <input type="text" name="LabID" id="LabID" class="form-control form-control-lg" />
+                            <input readonly type="text" name="LabID" id="LabID" class="form-control form-control-lg" />
                            
                         </div>
                         <div class="form-outline">

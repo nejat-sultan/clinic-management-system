@@ -24,9 +24,9 @@
         <div class="sidebar-brand">
         <h2>Logo</h2>
         </div>
-        <ul class="sidebar-nav">
-            <li class="active"> <a href="#"><i class="fa fa-home"> </i>Home</a></li> 
-            <li> <a href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"></i>Dashboard</a> </li>
+        <ul class="sidebar-nav" tabindex="1">
+            <!-- <li class=" active"> <a href="#"><i class="fa fa-home"> </i>Home</a></li>  -->
+            <li class="active"> <a href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"></i>Dashboard</a> </li>
             <li> <a href="{{ url('/employee') }}"><i class="fa fa-users"></i>Employees</a> </li>
             <li> <a href="{{ url('/patient') }}"><i class="fa fa-bed"></i>Patients</a> </li> 
             <li> <a href="{{ url('/appointment') }}"><i class="fa fa-calendar-check-o"></i>Appointments</a> </li>
@@ -98,6 +98,16 @@
         $wrapper.classList.toggle('toggled');
         });
 
+
+        // const links =document.querySelectorAll(".link ");
+        // links.forEach(btn => btn.addEventListener("click",(e)=>{
+        //     e.preventDefault();
+        //     document.querySelector(".link.active").classList.remove("active");
+        //     btn.classList.add("active")
+        // }));
+
     </script>
+
+
 </body>
 </html>
