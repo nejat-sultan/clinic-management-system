@@ -6,16 +6,26 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-9 mb-4">
+                    <div class="col-sm-6 mb-4">
 						<h4><b>Manage Labs</b></h4>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
                         <button type="button" class="btn btn-success btn-sm" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#labModal"> 
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New Lab
                         </button>
 					</div>
+                    <div class="col-sm-4">
+                        <form class="form-inline my-2 my-lg-0" method="get" action="/searchlab">
+                            <input class="form-control mr-sm-2" name="search" placeholder="Search" value="{{ isset($search) ? $search : ''}}"/>
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> 
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>  
+                        </form>
+					</div>
+
                 </div>
             </div>
+            
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
@@ -63,6 +73,7 @@
                     <form action="{{ url('lab') }}" method="post">
                     {!! csrf_field() !!}
                     <div class="modal-body">
+                        
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Type</label>
                             <input type="text" name="LabType" id="LabType1" class="form-control form-control-lg" />
@@ -100,6 +111,8 @@
                         <input type="hidden" name="id" id="id">
 
                     <div class="modal-body">
+
+                    
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Type</label>
                             <input type="text" name="LabType" id="LabType"  class="form-control form-control-lg" />

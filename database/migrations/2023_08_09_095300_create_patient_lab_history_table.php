@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('patient_lab_history', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('LabID');
-            $table->unsignedBigInteger('AppointmentID');
+            $table->unsignedBigInteger('PatientID');
             $table->unsignedBigInteger('LabDoneByID');
             $table->string('LabResult');
             $table->foreign('LabID')->references('id')->on('lab')->onDelete('cascade');
-            $table->foreign('AppointmentID')->references('id')->on('appointment')->onDelete('cascade');
+            $table->foreign('PatientID')->references('id')->on('patient')->onDelete('cascade');
             $table->foreign('LabDoneByID')->references('id')->on('employee')->onDelete('cascade');
 
             $table->timestamps();

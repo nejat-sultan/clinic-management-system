@@ -11,5 +11,12 @@ class Employeetype extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['TypeName', 'TypeDescription'];
 
+    public function persons()
+    {
+        return $this->hasMany(Person::class);
+    }
+
+    
+
     use HasFactory;
 }

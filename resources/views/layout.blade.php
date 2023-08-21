@@ -28,8 +28,10 @@
             <li class="active"> <a href="#"><i class="fa fa-home"> </i>Home</a></li> 
             <li> <a href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"></i>Dashboard</a> </li>
             <li> <a href="{{ url('/employee') }}"><i class="fa fa-users"></i>Employees</a> </li>
-            <li> <a href="{{ url('/') }}"><i class="fa fa-bed"></i>Patients</a> </li> 
-            <li> <a href="{{ url('/') }}"><i class="fa fa-calendar-check-o"></i>Appointments</a> </li>
+            <li> <a href="{{ url('/patient') }}"><i class="fa fa-bed"></i>Patients</a> </li> 
+            <li> <a href="{{ url('/appointment') }}"><i class="fa fa-calendar-check-o"></i>Appointments</a> </li>
+            <li> <a href="{{ url('/labhistory') }}"><i class="fa fa-stethoscope"></i>Ordered Labs</a> </li>
+            <li> <a href="{{ url('/doctorappointment') }}"><i class="fa fa-calendar-check-o"></i>Doctor Appointments</a> </li>
             <li> 
                 <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-info"></i>Other Info
@@ -48,11 +50,34 @@
         <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a href="#" class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i></a>
+                <a href="#" class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>
         </nav>
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach(@errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+        @if(session()->exists('message'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{{session('message')}}</li>
+                </ul>
+            </div>
+        @endif
+
+        
     </div>
+
+   
 
     <section id="content-wrapper">
         <div class="row">

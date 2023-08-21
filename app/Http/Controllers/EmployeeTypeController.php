@@ -20,6 +20,18 @@ class EmployeeTypeController extends Controller
         return view('employeetypes.index')->with('employeetypes', $employeetypes);
     }
 
+    
+    public function searchemployeetype(Request $request)
+    {
+        $search = $request->search;
+        $employeetypes = Employeetype::where(function($query) use ($search){
+            $query->where('TypeName','like',"%$search%");
+        })
+        ->get();
+
+        return view('employeetypes.index', compact('employeetypes','search'));   
+    }
+
     /**
      * Show the form for creating a new resource.
      */

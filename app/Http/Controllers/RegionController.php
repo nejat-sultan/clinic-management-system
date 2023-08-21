@@ -20,6 +20,17 @@ class RegionController extends Controller
         return view('regions.index')->with('regions', $regions);
     }
 
+    public function searchregion(Request $request)
+    {
+        $search = $request->search;
+        $regions = Region::where(function($query) use ($search){
+            $query->where('RegionName','like',"%$search%");
+        })
+        ->get();
+
+        return view('Regions.index', compact('regions','search'));   
+    }
+
     /**
      * Show the form for creating a new resource.
      */

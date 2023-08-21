@@ -20,6 +20,17 @@ class LabController extends Controller
         return view('labs.index')->with('labs', $labs);
     }
 
+    public function searchlab(Request $request)
+    {
+        $search = $request->search;
+        $labs = Lab::where(function($query) use ($search){
+            $query->where('LabType','like',"%$search%");
+        })
+        ->get();
+
+        return view('labs.index', compact('labs','search'));   
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -33,6 +44,11 @@ class LabController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'LabType'=> 'required',
+            'LabDescription'=> 'required'
+        ]);
+        
         $input = $request->all();
         Lab::create($input);
         return redirect('lab')->with('flash_message', 'Lab Added!');

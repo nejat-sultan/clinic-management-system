@@ -11,5 +11,10 @@ class Lab extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['LabType', 'LabDescription'];
 
+    public function patienthistories()
+    {
+        return $this->hasMany(Patienthistory::class);
+    }
+
     use HasFactory;
 }

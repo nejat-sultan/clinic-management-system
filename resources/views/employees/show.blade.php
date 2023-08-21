@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
- 
+<!--  
       <div class="col-12">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
 
@@ -20,24 +20,24 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <h3 class="mb-3" style="color: #145CAC;">General Information</h3>
-                    <p><b>First Name : </b>{{ $employees->name }}</p>
-                    <p><b>Last Name : </b>{{ $employees->name }}</p>
-                    <p><b>Username : </b>{{ $employees->address }}</p>
-                    <p><b>Gender : </b>{{ $employees->mobile }}</p>
-                    <p><b>Date of Birth : </b>{{ $employees->address }}</p>
-                    <p><b>Employee Type : </b>{{ $employees->mobile }}</p>
+                    <p><b>First Name : </b>first</p>
+                    <p><b>Last Name : </b></p>
+                    <p><b>Username : </b></p>
+                    <p><b>Gender : </b></p>
+                    <p><b>Date of Birth : </b></p>
+                    <p><b>Employee Type : </b></p>
                 </div>
               </div>
 
               <div class="col-lg-6 text-white" style="background-color: #145CAC;">
                 <div class="p-5">
                   <h3 class="mb-3">Contact Details/Address</h3>
-                    <p><b>Email : </b>{{ $employees->name }}</p>
-                    <p><b>Phone No : </b>{{ $employees->name }}</p>
-                    <p><b>Subcity : </b>{{ $employees->address }}</p>
-                    <p><b>Woreda : </b>{{ $employees->mobile }}</p>
-                    <p><b>Town : </b>{{ $employees->address }}</p>
-                    <p><b>House No : </b>{{ $employees->mobile }}</p>
+                    <p><b>Email : </b></p>
+                    <p><b>Phone No : </b></p>
+                    <p><b>Subcity : </b></p>
+                    <p><b>Woreda : </b></p>
+                    <p><b>Town : </b></p>
+                    <p><b>House No : </b></p>
             
                 </div>
               </div>
@@ -46,6 +46,6 @@
             
           </div>
         </div>
-      </div>
+      </div> -->
 
 @endsection
