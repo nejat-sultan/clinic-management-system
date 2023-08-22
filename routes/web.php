@@ -35,6 +35,10 @@ Route::get("/search", [PersonController::class, 'search']);
 
 Route::resource("/patient", PatientController::class);
 Route::get("/searchpatient", [PatientController::class, 'searchpatient']);
+Route::put("/addphone", [PatientController::class, 'addphone']);
+Route::put("/addemail", [PatientController::class, 'addemail']);
+Route::put("/addlicense", [PatientController::class, 'addlicense']);
+
 
 Route::resource("/dashboard", DashboardController::class);
 

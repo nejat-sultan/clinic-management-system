@@ -11,7 +11,8 @@ use App\Models\Region;
 use App\Models\Patient;
 use App\Models\Address;
 use App\Models\Email;
-use App\Models\Phone;
+use App\Models\Phone; 
+use App\Models\License;
 
 use Illuminate\Support\Facades\DB;
 
@@ -202,5 +203,35 @@ class PatientController extends Controller
         return redirect('patient')->with('flash_message', 'Patient deleted!');
     
            
+    }
+
+    public function addphone(Request $request)
+    {
+        $id = $request->input('id');
+
+        $input = $request->all();
+        $phoneno= Phone::where('PersonID','=',$id)->create($input);
+        return redirect('patient')->with('flash_message', 'Phoneno Added!');
+
+    }
+
+    public function addemail(Request $request)
+    {
+        $id = $request->input('id');
+
+        $input = $request->all();
+        $email= Email::where('PersonID','=',$id)->create($input);
+        return redirect('patient')->with('flash_message', 'Email Added!');
+
+    }
+
+    public function addlicense(Request $request)
+    {
+        $id = $request->input('id');
+
+        $input = $request->all();
+        $license= License::where('PersonID','=',$id)->create($input);
+        return redirect('patient')->with('flash_message', 'License Added!');
+
     }
 }
