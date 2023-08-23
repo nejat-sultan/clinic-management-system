@@ -31,7 +31,7 @@ use App\Http\Controllers\ProductController;
      return view('auth.login');
  });
 
-//Route::resource("/", DashboardController::class);
+Route::resource("/home", DashboardController::class);
 
 
 Route::group(['middleware' => ['auth']], function() {
@@ -91,4 +91,4 @@ Route::put("/labhistory", [LabHistoryController::class, 'update']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
