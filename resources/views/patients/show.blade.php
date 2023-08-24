@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-5">
+                  <div class="col-sm-4 ml-3">
                     <button type="button" class="btn btn-light btn-sm" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#phonenoModal"> 
                       <i class="fa fa-plus" aria-hidden="true"></i> Add Phone Number
                     </button>

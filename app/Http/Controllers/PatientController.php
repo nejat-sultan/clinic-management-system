@@ -211,7 +211,7 @@ class PatientController extends Controller
 
         $input = $request->all();
         $phoneno= Phone::where('PersonID','=',$id)->create($input);
-        return redirect('patient')->with('flash_message', 'Phoneno Added!');
+        return redirect()->back()->with('flash_message', 'Phoneno Added!');
 
     }
 
@@ -221,7 +221,7 @@ class PatientController extends Controller
 
         $input = $request->all();
         $email= Email::where('PersonID','=',$id)->create($input);
-        return redirect('patient')->with('flash_message', 'Email Added!');
+        return redirect()->back()->with('flash_message', 'Email Added!');
 
     }
 
@@ -231,7 +231,7 @@ class PatientController extends Controller
 
         $input = $request->all();
         $license= License::where('PersonID','=',$id)->create($input);
-        return redirect('patient')->with('flash_message', 'License Added!');
+        return redirect()->back()->with('flash_message', 'License Added!');
 
     }
 }

@@ -24,15 +24,6 @@
 					</div>
                 </div>
             </div>
-
-            
-        @if(session()->exists('message'))
-            <div class="alert alert-success">
-                <ul>
-                    <li>{{session('message')}}</li>
-                </ul>
-            </div>
-        @endif 
         
             <table class="table table-striped table-hover">
                 <thead>
@@ -72,7 +63,7 @@
                 </tbody>
             </table>
 
-            
+            {{ $employees->links() }}
         </div>
     </div>
 

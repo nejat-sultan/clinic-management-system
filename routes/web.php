@@ -31,7 +31,7 @@ use App\Http\Controllers\ProductController;
      return view('auth.login');
  });
 
-Route::resource("/home", DashboardController::class);
+Route::resource("/", DashboardController::class);
 
 
 Route::group(['middleware' => ['auth']], function() {

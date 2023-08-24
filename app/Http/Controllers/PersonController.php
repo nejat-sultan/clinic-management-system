@@ -15,6 +15,7 @@ use App\Models\Email;
 use App\Models\Phone;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 
 class PersonController extends Controller
@@ -25,11 +26,9 @@ class PersonController extends Controller
     public function index(): View
     {
         // $employees = Person::all();
-        $employees = Person::where('PersonTypeID','!=','3')->get();
-        return view('employees.index')->with('employees', $employees);
 
-        // $employees = Person::latest()->paginate(2);
-        // return view('employees.index', compact('employees'))->with('i', (request()->input('page', 1) -1) * 2);
+        $employees = Person::where('PersonTypeID','!=','3')->latest()->paginate(2);
+        return view('employees.index')->with('employees', $employees);
 
     }
 
@@ -39,10 +38,21 @@ class PersonController extends Controller
         $employees = Person::where(function($query) use ($search){
             $query->where('FirstName','like',"%$search%");
         })
-        ->get();
+        ->paginate(2);
+        return view('employees.index', compact('employees','search')); 
+        
 
-        return view('employees.index', compact('employees','search'));   
-    }
+
+    //     $search = $request->get('search');
+    //     if($search != ''){
+    //     $employees = Person::where('FirstName','like', '%' .$search. '%')->paginate(2);
+    //     $employees->appends(array('search'=> input::get('search'),));
+    //     if(count($employees )>0){
+    //        return view('employees.index',['employees'=>$employees]);
+    //     }
+    //     return back()->with('error','No results Found');
+    // }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -60,14 +70,11 @@ class PersonController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // $input = $request->all();
-        // Employee::create($input);
-        // return redirect('employee')->with('flash_message', 'Employee Added!');
-
-        $request->validate([
-            'FirstName'=> 'required',
-            'LastName'=> 'required',
+        $validator = $request->validate([
+            'FirstName' => ['required'],
+            'LastName' => ['required']
         ]);
+
         
             $person = new person();
             $employee = new employee();
@@ -216,8 +223,10 @@ class PersonController extends Controller
         DB::table('employee')->where('PersonID', $id)->delete(); 
         DB::table('person_address')->where('PersonID', $id)->delete();                           
         $data->delete();
-        return redirect('employee')->with('flash_message', 'Employee deleted!');
-    
-           
+        // return redirect('employee')->with('flash_message', 'Employee deleted!');
+        session()->flash('message', 'Employee deleted!');
+        return redirect()->back();
+        
+ 
     }
 }
