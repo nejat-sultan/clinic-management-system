@@ -9,7 +9,7 @@
                     <div class="col-sm-8 mb-4">
 						<h4><b>Active Appointments</b></h4>
 					</div>
-					<div class="col-sm-2">
+					<!-- <div class="col-sm-2">
                         <a href="{{ url('/orderedlab') }}" class="btn btn-success btn-sm" title="Ordered Lab">
                              Ordered Lab
                         </a>
@@ -18,7 +18,7 @@
                         <a href="{{ url('/patienthistory') }}" class="btn btn-success btn-sm" title="Patient History">
                              Patient History
                         </a>
-					</div>
+					</div> -->
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -45,8 +45,11 @@
                                 <i class="fa fa-stethoscope" aria-hidden="true"> Order Lab</i>
                             </button> 
                             <button type="button" value="{{ $item->id }}" class="btn btn-success historybtn btn-sm"> 
-                                <i class="fa fa-bed" aria-hidden="true"> Patient History</i>
-                            </button> 
+                                <i class="fa fa-bed" aria-hidden="true"> Add Patient History</i>
+                            </button>
+                            <a href="{{ url('/doctorappointment/' . $item->PatientID) }}" title="View">
+                                <button class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true">View</i></button>
+                            </a> 
                         </td>
                     </tr>
                     @endforeach

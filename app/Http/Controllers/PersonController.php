@@ -27,7 +27,7 @@ class PersonController extends Controller
     {
         // $employees = Person::all();
 
-        $employees = Person::where('PersonTypeID','!=','3')->latest()->paginate(2);
+        $employees = Person::where('PersonTypeID','!=','3')->latest()->paginate(10);
         return view('employees.index')->with('employees', $employees);
 
     }
@@ -38,7 +38,7 @@ class PersonController extends Controller
         $employees = Person::where(function($query) use ($search){
             $query->where('FirstName','like',"%$search%");
         })
-        ->paginate(2);
+        ->paginate(10);
         return view('employees.index', compact('employees','search')); 
         
 

@@ -79,7 +79,7 @@ Route::put("/doctorappointment", [DoctorAppointmentController::class, 'update'])
 Route::get("/patienthistory/{id}", [DoctorAppointmentController::class, 'edithistory']);
 Route::put("/patienthistory", [DoctorAppointmentController::class, 'updatehistory']);
 Route::get("/orderedlab", [DoctorAppointmentController::class, 'orderedlab']);
-Route::get("/patienthistory", [DoctorAppointmentController::class, 'patienthistory']);
+// Route::get("/patienthistory", [DoctorAppointmentController::class, 'patienthistory']);
 
 
 

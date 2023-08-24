@@ -94,7 +94,11 @@
         @else
         
         <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #eee">
+            <div class="sidebar-brand">
+                <h2>Logo</h2>
+            </div>
             <div class="container">
+        
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -122,9 +126,9 @@
             </div>
         </nav>
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
+        <!-- <div class="sidebar-brand">
         <h2>Logo</h2>
-        </div>
+        </div> -->
         <ul class="sidebar-nav" tabindex="1">
             <!-- <li class=" active"> <a href="#"><i class="fa fa-home"> </i>Home</a></li>  -->
             <li class="active"> <a href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"></i>Dashboard</a> </li>
@@ -143,7 +147,7 @@
                     <a class="dropdown-item" href="{{ url('/employeetype') }}">Manage Employee Type</a>
                 </div>
             </li>
-            <li> <a href="{{ url('/chpwd') }}"><i class="fa fa-lock"></i>Change Password</a> </li> 
+            <!-- <li> <a href="{{ url('/chpwd') }}"><i class="fa fa-lock"></i>Change Password</a> </li>  -->
         </ul>
     </aside>
 

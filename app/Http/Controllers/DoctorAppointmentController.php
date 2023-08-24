@@ -35,11 +35,11 @@ class DoctorAppointmentController extends Controller
         return view('doctorsappointments.vieworder')->with('orderedlabs', $orderedlabs);
     } 
 
-    public function patienthistory(): View
-    {
-        $patienthistories = Patienthistory::all();
-        return view('doctorsappointments.viewhistory')->with('patienthistories', $patienthistories);
-    }
+    // public function patienthistory(): View
+    // {
+    //     $patienthistories = Patienthistory::all();
+    //     return view('doctorsappointments.viewhistory')->with('patienthistories', $patienthistories);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -63,9 +63,15 @@ class DoctorAppointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $PatientID)
     {
-       
+        $orderedlabs = Labhistory::where('PatientID','=',$PatientID)->get();
+        $patienthistories = Patienthistory::where('PatientID','=',$PatientID)->get();
+
+        return view('doctorsappointments.show', [
+            'orderedlabs' => $orderedlabs,
+            'patienthistories' => $patienthistories
+        ]);
     }
 
     /**
