@@ -48,10 +48,7 @@
                     <div class="col-sm-9 mb-4">
 						<h4><b>Patient History</b></h4>
 					</div>
-                    <!-- <div class="col-sm-3">
-                        <a href="{{ url('/doctorappointment/') }}" class="btn btn-success btn-sm" title="Back"> Back </a>
-                    </div> -->
-					
+                  
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -71,7 +68,6 @@
                         <td>{{ $item->patient->CardNumber }}</td>
                         <td>{{ $item->findings }}</td>
                         <td> </td>
-
                     </tr>
                     @endforeach
                 </tbody>

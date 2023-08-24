@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\Person;
+use App\Models\EmployeeType;
 
 
 class AppointmentController extends Controller
@@ -23,7 +24,8 @@ class AppointmentController extends Controller
 
         $appointments = Appointment::all();
         $patients = Patient::pluck('CardNumber', 'id');
-        $persons = Person::pluck('FirstName', 'id');
+        $persons = Person::where('PersonTypeID','=','1')->get()->pluck('FirstName', 'id');
+        // $pers = EmployeeType::where('TypeName','=','Doctor');
         return view('appointments.index', compact('patients', 'persons'))->with('appointments', $appointments);
 
     }

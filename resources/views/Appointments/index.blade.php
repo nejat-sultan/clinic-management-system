@@ -53,7 +53,7 @@
 
 
 
-        <!-- Add Lab Modal -->
+        <!-- Add Appointment Modal -->
         <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
