@@ -44,9 +44,15 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'RegionNumber'=> 'required',
+            'RegionName'=> 'required',
+        ]);
+
         $input = $request->all();
         Region::create($input);
-        return redirect('region')->with('flash_message', 'Region Added!');
+        session()->flash('message', 'Region Added Successfully!');
+        return redirect('region'); 
     }
 
     /**
@@ -79,7 +85,8 @@ class RegionController extends Controller
         $region->RegionNumber = $request->input('RegionNumber');
         $region->RegionName = $request->input('RegionName');
         $region->update();
-        return redirect('region')->with('flash_message', 'Region Updated!');  
+        session()->flash('message', 'Region Updated Successfully!');
+        return redirect('region'); 
 
     }
 
@@ -89,6 +96,7 @@ class RegionController extends Controller
     public function destroy(string $id)
     {
         Region::destroy($id);
-        return redirect('region')->with('flash_message', 'Region deleted!');
+        session()->flash('message', 'Region Deleted Successfully!');
+        return redirect('region'); 
     }
 }

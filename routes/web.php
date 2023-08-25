@@ -59,6 +59,8 @@ Route::get("/editlab/{id}", [LabController::class, 'edit']);
 Route::put("/lab", [LabController::class, 'update']);
 Route::get("/searchlab", [LabController::class, 'searchlab']);
 
+
+
 Route::resource("/region", RegionController::class);
 Route::get("/editregion/{id}", [RegionController::class, 'edit']);
 Route::put("/region", [RegionController::class, 'update']);

@@ -31,6 +31,7 @@ class LabController extends Controller
         return view('labs.index', compact('labs','search'));   
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -51,7 +52,8 @@ class LabController extends Controller
         
         $input = $request->all();
         Lab::create($input);
-        return redirect('lab')->with('flash_message', 'Lab Added!');
+        session()->flash('message', 'Lab Added Successfully!');
+        return redirect('lab'); 
     }
 
     /**
@@ -84,8 +86,8 @@ class LabController extends Controller
         $lab->LabType = $request->input('LabType');
         $lab->LabDescription = $request->input('LabDescription');
         $lab->update();
-        return redirect('lab')->with('flash_message', 'Employee Updated!');  
-
+        session()->flash('message', 'Lab Updated Successfully!');
+        return redirect('lab'); 
     }
 
     /**
@@ -94,6 +96,7 @@ class LabController extends Controller
     public function destroy(string $id)
     {
         Lab::destroy($id);
-        return redirect('lab')->with('flash_message', 'Lab deleted!');
+        session()->flash('message', 'Lab Deleted Successfully!');
+        return redirect('lab'); 
     }
 }

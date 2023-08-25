@@ -9,11 +9,14 @@
                     <div class="col-sm-9 mb-4">
 						<h4><b>Ordered Labs</b></h4>
 					</div>
-					<!-- <div class="col-sm-3">
-                        <button type="button" class="btn btn-success btn-sm" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#appointmentModal"> 
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New Appointment
-                        </button>
-					</div> -->
+				    <!-- <div class="col-sm-3">
+                        <form class="form-inline my-2 my-lg-0" method="get" action="/searchorderedlab">
+                            <input class="form-control mr-sm-2" name="search" placeholder="Search" value="{{ isset($search) ? $search : ''}}"/>
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> 
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>  
+                        </form>
+					</div>  -->
                 </div>
             </div>
             <table class="table table-striped table-hover">

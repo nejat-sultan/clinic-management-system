@@ -45,9 +45,16 @@ class EmployeeTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $request->validate([
+            'TypeName' => ['required'],
+            'TypeDescription' => ['required']
+            
+        ]);
+
         $input = $request->all();
         EmployeeType::create($input);
-        return redirect('employeetype')->with('flash_message', 'Employee Type Added!');
+        session()->flash('message', 'Employee Type Added Successfully!');
+        return redirect('employeetype'); 
     }
 
     /**
@@ -79,9 +86,9 @@ class EmployeeTypeController extends Controller
         $employeetype = EmployeeType::find($id);
         $employeetype->TypeName = $request->input('TypeName');
         $employeetype->TypeDescription = $request->input('TypeDescription');
-        $employeetype->update();
-        return redirect('employeetype')->with('flash_message', 'Employee Type Updated!');  
-
+        $employeetype->update();  
+        session()->flash('message', 'Employee Type Updated Successfully!');
+        return redirect('employeetype'); 
     }
 
     /**
@@ -90,6 +97,7 @@ class EmployeeTypeController extends Controller
     public function destroy(string $id)
     {
         EmployeeType::destroy($id);
-        return redirect('employeetype')->with('flash_message', 'Employee Type deleted!');
+        session()->flash('message', 'Employee Type Deleted Successfully!');
+        return redirect('employeetype'); 
     }
 }

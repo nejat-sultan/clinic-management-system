@@ -70,9 +70,21 @@ class PersonController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validator = $request->validate([
-            'FirstName' => ['required'],
-            'LastName' => ['required']
+        $request->validate([
+            'PersonTypeID'=> 'required',
+            'DOB'=> 'required',
+            'FirstName'=> 'required',
+            'FatherName'=> 'required',
+            'LastName'=> 'required',
+            'PhotoURL'=> 'required',
+            'Gender'=> 'required',
+            'ZoneOrSubcity'=> 'required',
+            'Kebele'=> 'required',
+            'Woreda'=> 'required',
+            'Town'=> 'required',
+            'HouseNumber'=> 'required',
+            'Email'=> 'required',
+            'PhoneNumber'=> 'required'
         ]);
 
         
@@ -130,7 +142,7 @@ class PersonController extends Controller
             $email->save();
 			$phone->save();
 
-            session()->flash('message', 'employee successfully added!');
+            session()->flash('message', 'Employee Successfully Added!');
             return redirect('employee');
             // return redirect('employee')->with('flash_message', 'Employee Added!');
     }
@@ -224,7 +236,7 @@ class PersonController extends Controller
         DB::table('person_address')->where('PersonID', $id)->delete();                           
         $data->delete();
         // return redirect('employee')->with('flash_message', 'Employee deleted!');
-        session()->flash('message', 'Employee deleted!');
+        session()->flash('message', 'Employee Successfully Deleted!');
         return redirect()->back();
         
  

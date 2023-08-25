@@ -59,10 +59,22 @@ class PatientController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'FirstName'=> 'required',
-        //     'LastName'=> 'required',
-        // ]);
+        $request->validate([
+            'PersonTypeID'=> 'required',
+            'DOB'=> 'required',
+            'FirstName'=> 'required',
+            'FatherName'=> 'required',
+            'LastName'=> 'required',
+            'PhotoURL'=> 'required',
+            'Gender'=> 'required',
+            'ZoneOrSubcity'=> 'required',
+            'Kebele'=> 'required',
+            'Woreda'=> 'required',
+            'Town'=> 'required',
+            'HouseNumber'=> 'required',
+            'Email'=> 'required',
+            'PhoneNumber'=> 'required'
+        ]);
         
             $person = new person();
             $patient = new patient();
@@ -107,7 +119,7 @@ class PatientController extends Controller
             $email->save();
 			$phone->save();
 
-            session()->flash('message', 'patient successfully added!');
+            session()->flash('message', 'Patient Successfully Added!');
             return redirect('patient');
      
     }
@@ -200,8 +212,8 @@ class PatientController extends Controller
         DB::table('patient')->where('PersonID', $id)->delete(); 
         DB::table('person_address')->where('PersonID', $id)->delete();                           
         $data->delete();
-        return redirect('patient')->with('flash_message', 'Patient deleted!');
-    
+        session()->flash('message', 'Patient Deleted Successfully!');
+        return redirect('patient'); 
            
     }
 
@@ -211,7 +223,8 @@ class PatientController extends Controller
 
         $input = $request->all();
         $phoneno= Phone::where('PersonID','=',$id)->create($input);
-        return redirect()->back()->with('flash_message', 'Phoneno Added!');
+        session()->flash('message', 'Phone Number Added Successfully!');
+        return redirect()->back(); 
 
     }
 
@@ -221,7 +234,8 @@ class PatientController extends Controller
 
         $input = $request->all();
         $email= Email::where('PersonID','=',$id)->create($input);
-        return redirect()->back()->with('flash_message', 'Email Added!');
+        session()->flash('message', 'Email Added Successfully!');
+        return redirect()->back(); 
 
     }
 
@@ -231,7 +245,8 @@ class PatientController extends Controller
 
         $input = $request->all();
         $license= License::where('PersonID','=',$id)->create($input);
-        return redirect()->back()->with('flash_message', 'License Added!');
+        session()->flash('message', 'License Added Successfully!');
+        return redirect()->back(); 
 
     }
 }

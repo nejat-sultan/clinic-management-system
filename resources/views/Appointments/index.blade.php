@@ -14,7 +14,16 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New Appointment
                         </button>
 					</div>
+                    <!-- <div class="col-sm-4">
+                        <form class="form-inline my-2 my-lg-0" method="get" action="/searchappointment">
+                            <input class="form-control mr-sm-2" name="search" placeholder="Search" value="{{ isset($search) ? $search : ''}}"/>
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> 
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>  
+                        </form>
+					</div> -->
                 </div>
+                
             </div>
             <table class="table table-striped table-hover">
                 <thead>
@@ -77,7 +86,7 @@
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Appointment Date</label>
-                            <input type="date" name="AppointmentDate" id="AppointmentDate1" class="form-control form-control-lg" />
+                            <input type="date" name="AppointmentDate" id="AppointmentDate1" class="form-control form-control-lg"/>
                         </div> 
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Assigned To</label>
@@ -125,7 +134,7 @@
                     <div class="modal-body">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Patient</label>
-                            <select name="PatientID" id="PatientID" class="form-control">
+                            <select name="PatientID" id="PatientID" class="form-control" required>
                                 @foreach($patients as $id => $CardNumber)
                                 <option value="{{ $id }}">{{ $CardNumber }}</option>
                                 @endforeach
@@ -133,11 +142,11 @@
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Appointment Date</label>
-                            <input type="date" name="AppointmentDate" id="AppointmentDate" class="form-control form-control-lg" />
+                            <input type="date" name="AppointmentDate" id="AppointmentDate" class="form-control form-control-lg" required/>
                         </div> 
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Assigned To</label>
-                            <select name="AssignedToID" id="AssignedToID" class="form-control">
+                            <select name="AssignedToID" id="AssignedToID" class="form-control" required>
                                 @foreach($persons as $id => $FirstName)
                                 <option value="{{ $id }}">{{ $FirstName }}</option>
                                 @endforeach
@@ -145,7 +154,7 @@
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Status</label>
-                            <select name="Status" id="Status" class="form-control">
+                            <select name="Status" id="Status" class="form-control" required>
                                 <option selected>Active</option>
                                 <option value="inactive">Inactive</option>
                             </select>

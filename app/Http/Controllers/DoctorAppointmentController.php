@@ -102,12 +102,18 @@ class DoctorAppointmentController extends Controller
     {
         $input = $request->all();
         Labhistory::create($input);
-        return redirect('doctorappointment')->with('flash_message', ' Lab Ordered!');  
+        session()->flash('message', 'Lab Ordered Successfully!');
+        return redirect('doctorappointment');  
 
     }
 
     public function updatehistory(Request $request)
     {
+        $validator = $request->validate([
+            'findings' => ['required'],
+            'medicine' => ['required']
+            
+        ]);
      
         $patient = new patient();
         $patienthistory = new patienthistory();
@@ -126,9 +132,9 @@ class DoctorAppointmentController extends Controller
         $patienthistory->save();
         $prescriptionhistory->save();
       
-
-        return redirect('doctorappointment')->with('flash_message', 'Patient History Added!');
-
+        
+        session()->flash('message', 'Patient History Added Successfully!');
+        return redirect('doctorappointment'); 
     }
 
     /**

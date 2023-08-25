@@ -110,11 +110,11 @@
                     <div class="modal-body">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Person Type</label>
-                            <input type="text" name="TypeName" id="TypeName" class="form-control form-control-lg" />
+                            <input type="text" name="TypeName" id="TypeName" class="form-control form-control-lg" required/>
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Person Description</label>
-                            <input type="text" name="TypeDescription" id="TypeDescription" class="form-control form-control-lg" />
+                            <input type="text" name="TypeDescription" id="TypeDescription" class="form-control form-control-lg" required/>
                         </div>  
                     </div>
 

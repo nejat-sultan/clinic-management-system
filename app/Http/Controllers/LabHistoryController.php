@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Labhistory;
+use App\Models\Lab;
 
 
 class LabHistoryController extends Controller
@@ -73,12 +74,14 @@ class LabHistoryController extends Controller
      */
     public function update(Request $request)
     {
+      
         $id = $request->input('id');
         $labhistory = Labhistory::find($id);
         $labhistory->LabResult = $request->input('LabResult');
 
         $labhistory->update();
-        return redirect('labhistory')->with('flash_message', 'Result Updated!');  
+        session()->flash('message', 'Result Updated Successfully!');
+        return redirect('labhistory');  
 
     }
 

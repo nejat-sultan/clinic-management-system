@@ -44,9 +44,18 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $request->validate([
+            'PatientID' => ['required'],
+            'AppointmentDate' => ['required'],
+            'AssignedToID' => ['required'],
+            'Status' => ['required']
+            
+        ]);
+
         $input = $request->all();
         Appointment::create($input);
-        return redirect('appointment')->with('flash_message', 'Appointment Added!');
+        session()->flash('message', 'Appointment successfully added!');
+        return redirect('appointment');
 
     }
 
@@ -82,7 +91,8 @@ class AppointmentController extends Controller
         $appointment->AppointmentDate = $request->input('AppointmentDate');
         $appointment->Status = $request->input('Status');
         $appointment->update();
-        return redirect('appointment')->with('flash_message', 'Appointment Updated!');  
+        session()->flash('message', 'Appointment successfully Updated!');
+        return redirect('appointment'); 
 
     }
 
@@ -92,6 +102,7 @@ class AppointmentController extends Controller
     public function destroy(string $id)
     {
         Appointment::destroy($id);
-        return redirect('appointment')->with('flash_message', 'Appointment deleted!');
+        session()->flash('message', 'Appointment successfully Deleted!');
+        return redirect('appointment'); 
     }
 }

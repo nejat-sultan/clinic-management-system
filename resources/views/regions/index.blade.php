@@ -110,11 +110,11 @@
                     <div class="modal-body">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Region Number</label>
-                            <input type="text" name="RegionNumber" id="RegionNumber"  class="form-control form-control-lg" />
+                            <input type="text" name="RegionNumber" id="RegionNumber"  class="form-control form-control-lg" required/>
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Region Name</label>
-                            <input type="text" name="RegionName" id="RegionName" class="form-control form-control-lg" />
+                            <input type="text" name="RegionName" id="RegionName" class="form-control form-control-lg" required/>
                         </div>  
                     </div>
 

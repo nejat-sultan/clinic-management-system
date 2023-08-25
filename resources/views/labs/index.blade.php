@@ -115,11 +115,11 @@
                     
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Type</label>
-                            <input type="text" name="LabType" id="LabType"  class="form-control form-control-lg" />
+                            <input type="text" name="LabType" id="LabType"  class="form-control form-control-lg" required/>
                         </div>
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev3">Lab Description</label>
-                            <input type="text" name="LabDescription" id="LabDescription" class="form-control form-control-lg" />
+                            <input type="text" name="LabDescription" id="LabDescription" class="form-control form-control-lg" required/>
                         </div>  
                     </div>
 
