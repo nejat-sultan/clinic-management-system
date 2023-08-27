@@ -24,18 +24,19 @@ class Person extends Model
 
     public function emails()
     {
-        return $this->hasMany(Email::class);
+        return $this->hasMany(Email::class,'PersonID');
     }
 
     public function phones()
     {
-        return $this->hasMany(Phone::class);
+        return $this->hasMany(Phone::class, 'PersonID');
     }
 
 
     public function address()
     {
-        return $this->belongsTo(Address::class);
+        // return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class,'PersonID');
     }
 
     public function employee()

@@ -60,7 +60,7 @@ class PatientController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'PersonTypeID'=> 'required',
+      
             'DOB'=> 'required',
             'FirstName'=> 'required',
             'FatherName'=> 'required',

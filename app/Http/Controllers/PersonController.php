@@ -153,7 +153,10 @@ class PersonController extends Controller
     public function show(string $id): View
     {
         $employee = Person::find($id);
-        return view('employees.show')->with('employees', $employee);
+        // return view('employees.show')->with('employees', $employee)->with('address', $employee->address);
+
+       // $address = $employee->address;        
+        return view('employees.show')->with('employees', $employee);//->with('address',$address);
     }
 
     /**

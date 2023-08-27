@@ -13,6 +13,8 @@ use App\Models\Patienthistory;
 use App\Models\Prescriptionhistory;
 use App\Models\Patient;
 
+use Auth;
+
 
 class DoctorAppointmentController extends Controller
 {
@@ -21,11 +23,12 @@ class DoctorAppointmentController extends Controller
      */
     public function index(): View
     {
+        $user_id = Auth::user()->id;
        
-        // $doctorappointments = Appointment::all();
-        $doctorappointments = Appointment::where('Status','=','active')->get();
+
+        $doctorappointments = Appointment::where('Status','=','active')->where('AssignedToID','=',$user_id)->get();
         $labs = Lab::pluck('LabType', 'id');
-        return view('doctorsappointments.index', compact('labs'))->with('doctorappointments', $doctorappointments);
+        return view('doctorsappointments.index', compact('labs'), compact('user_id'))->with('doctorappointments', $doctorappointments);
 
     }
 
@@ -65,7 +68,10 @@ class DoctorAppointmentController extends Controller
      */
     public function show(string $PatientID)
     {
-        $orderedlabs = Labhistory::where('PatientID','=',$PatientID)->get();
+        $user_id = Auth::user()->id;
+
+        
+        $orderedlabs = Labhistory::where('PatientID','=',$PatientID)->where('LabDoneByID','=',$user_id)->get();
         $patienthistories = Patienthistory::where('PatientID','=',$PatientID)->get();
 
         return view('doctorsappointments.show', [

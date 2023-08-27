@@ -35,16 +35,20 @@
               <div class="col-lg-6 text-white" style="background-color: #145CAC;">
                 <div class="p-5">
                   <h3 class="mb-3">Contact Details/Address</h3>
-                    <p><b>Region : </b> {{ $employees->RegionName }}</p> 
-                    <p><b>Subcity : </b> {{ $employees->Subcity }}</p>
-                    <p><b>Kebele : </b> {{ $employees->Kebele }}</p>
-                    <p><b>Woreda : </b> {{ $employees->Woreda }}</p>
-                    <p><b>Town : </b> {{ $employees->Town }}</p>
-                    <p><b>House No : </b> {{ $employees->HouseNumber }}</p>
-                    <p><b>Email : </b> {{ $employees->Email }}</p>
-                    <p><b>Phone No : </b> {{ $employees->PhoneNumber }}</p>
-                    
-            
+                  @foreach($employees->address as $add)
+                    <p><b>Region : </b> {{ $add->Town }}</p> 
+                    <p><b>Subcity : </b> {{ $add->ZoneOrSubcity }}</p>
+                    <p><b>Kebele : </b> {{ $add->Kebele }}</p>
+                    <p><b>Woreda : </b> {{ $add->Woreda }}</p>
+                    <p><b>Town : </b> {{ $add->Town }}</p>
+                    <p><b>House No : </b> {{ $add->HouseNumber }}</p> 
+                  @endforeach
+                  @foreach($employees->emails as $email)
+                  <p><b>Email : </b> {{ $email->Email }}</p>
+                  @endforeach
+                  @foreach($employees->phones as $phone)
+                    <p><b>Phone : </b> {{ $phone->PhoneNumber }}</p>
+                  @endforeach
                 </div>
               </div>
 

@@ -9,6 +9,7 @@
                     <div class="col-sm-8 mb-4">
 						<h4><b>Active Appointments</b></h4>
 					</div>
+
 					<!-- <div class="col-sm-2">
                         <a href="{{ url('/orderedlab') }}" class="btn btn-success btn-sm" title="Ordered Lab">
                              Ordered Lab
@@ -59,7 +60,7 @@
 
         <div class="firstmodal">
         <!-- Order Lab -->
-            <div class="modal fade" id="orderlabModal" tabindex="-1" role="dialog" aria-labelledby="orderlabModalLabel" aria-hidden="true">
+            <div class="modal fade first" id="orderlabModal" tabindex="-1" role="dialog" aria-labelledby="orderlabModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -96,7 +97,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="first">Close</button>
                             <input type="submit" value="Add" class="btn btn-success"></br>
                         </div>
                     </form>

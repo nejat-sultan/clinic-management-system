@@ -30,9 +30,18 @@
                             <div class="card" >
                                         <h2><div class="card-header">{{ __('Feker Medium Clinic Login') }}</div></h2>
                                         <div class="card-body">
-                                            <form method="POST" action="{{ route('login') }}">
+                                            <form method="POST" action="{{ url('/login') }}">
                                                 @csrf
-
+                                                @if (count($errors) > 0)
+                                                  <div class="alert alert-danger">
+                                                    <strong>Whoops!<br>
+                                                    <ul>
+                                                       @foreach ($errors->all() as $error)
+                                                         <li>{{ $error }}</li>
+                                                       @endforeach
+                                                    </ul>
+                                                  </div>
+                                                @endif
                                                 <div class="row mb-3">
                                                     <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
@@ -102,8 +111,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                            @can('manage-users')
                             <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                            @endcan
+                            @can('manage-roles')
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                            @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -132,19 +145,35 @@
         <ul class="sidebar-nav" tabindex="1">
             <!-- <li class=" active"> <a href="#"><i class="fa fa-home"> </i>Home</a></li>  -->
             <li class="active"> <a href="{{ url('/dashboard') }}"><i class="fa fa-tachometer"></i>Dashboard</a> </li>
+            @can('manage-employees')
             <li> <a href="{{ url('/employee') }}"><i class="fa fa-users"></i>Employees</a> </li>
+            @endcan
+            @can('manage-patients')
             <li> <a href="{{ url('/patient') }}"><i class="fa fa-bed"></i>Patients</a> </li> 
+            @endcan
+            @can('manage-appointments')
             <li> <a href="{{ url('/appointment') }}"><i class="fa fa-calendar-check-o"></i>Appointments</a> </li>
+            @endcan
+            @can('manage-ordered-labs')
             <li> <a href="{{ url('/labhistory') }}"><i class="fa fa-stethoscope"></i>Ordered Labs</a> </li>
+            @endcan
+            @can('manage-patient-appointments')
             <li> <a href="{{ url('/doctorappointment') }}"><i class="fa fa-calendar-check-o"></i>Doctor Appointments</a> </li>
+            @endcan
             <li> 
                 <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-info"></i>Other Info
                 </a> 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @can('manage-lab-lists')
                     <a class="dropdown-item" href="{{ url('/lab') }}">Manage Lab</a>
+                    @endcan
+                    @can('manage-new-regions')
                     <a class="dropdown-item" href="{{ url('/region') }}">Manage Region</a>
+                    @endcan
+                    @can('manage-employee-types')
                     <a class="dropdown-item" href="{{ url('/employeetype') }}">Manage Employee Type</a>
+                    @endcan
                 </div>
             </li>
             <!-- <li> <a href="{{ url('/chpwd') }}"><i class="fa fa-lock"></i>Change Password</a> </li>  -->

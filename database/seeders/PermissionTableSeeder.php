@@ -21,7 +21,17 @@ class PermissionTableSeeder extends Seeder
            'patient-list',
            'patient-create',
            'patient-edit',
-           'patient-delete'
+           'patient-delete',
+           'manage-users',
+           'manage-roles',
+           'manage-employees',
+           'manage-patients',
+           'manage-appointments',
+           'manage-ordered-labs',
+           'manage-patient-appointments',
+           'manage-lab-lists',
+           'manage-new-regions',
+           'manage-employee-types'
         ];
         
         foreach ($permissions as $permission) {
